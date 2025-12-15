@@ -1,0 +1,14 @@
+.title_bar {
+    display: inline-flex;
+    /* gap: 4pt; */
+}
+
+.head {
+    -webkit-app-region: drag;
+    line-height: 1;
+    background: #000;
+    padding: 2pt;
+    text-align: right;
+    user-select: none;
+    position: relative;
+}
