@@ -18,9 +18,8 @@
         "transparent": true,
         "shadow": false,
         "width": 1000,
-        "height": 600,
-        "minWidth": 1000,
-        "minHeight": 600
+        "height": 800,
+        "resizable": false
       }
     ],
     "security": {

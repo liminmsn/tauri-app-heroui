@@ -5,7 +5,7 @@ function App() {
   return (
     <main className="main bg-foreground text-surface">
       <TitleBar />
-      <div className="content h-full p-10">213</div>
+      <div className="h-full p-2">213</div>
     </main>
   );
 }

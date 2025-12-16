@@ -1,10 +1,13 @@
 @import "tailwindcss";
 @import "@heroui/styles";
+:root{
+    line-height: 1;
+}
 
 #root {
     width: 100vw;
     height: 100vh;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     overflow: hidden;
 }
 
