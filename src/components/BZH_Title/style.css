@@ -1,0 +1,9 @@
+.bzh_title {
+    float: left;
+    display: inline-flex;
+    gap: 4px;
+}
+
+.title_bar button {
+    -webkit-app-region: no-drag;
+}

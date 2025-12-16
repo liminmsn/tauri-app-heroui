@@ -1,0 +1,6 @@
+.head {
+    text-align: right;
+    user-select: none;
+    position: relative;
+    -webkit-app-region: drag;
+}
