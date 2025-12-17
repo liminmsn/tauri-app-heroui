@@ -1,25 +1,26 @@
-import "./design/App.css";
 import TitleBar from "./components/BZH_TitleBar";
 import { useBZHContext } from "./context";
-import { useEffect } from "react";
-import { fetch } from "@tauri-apps/plugin-http";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import Home from "./view/Home";
+import "./design/App.css";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    Component: Home,
+    // loader: loadRootData,
+  },
+]);
 
 function App() {
   const [data] = useBZHContext()
 
-  useEffect(() => {
-    fetch('https://tauri.app/zh-cn/plugin/http-client/', {
-      method: 'GET'
-    }).then(res => {
-      console.log(res);
-
-    })
-  }, [])
-
   return (
     <main className={`h-full bg-foreground text-surface ${data.full || 'rounded-md'}`}>
       <TitleBar />
-      <div className="p-1">213</div>
+      <div className="p-1 main">
+        <RouterProvider router={router} />
+      </div>
     </main>
   );
 }
