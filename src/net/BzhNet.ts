@@ -8,6 +8,10 @@ export class BZHNet extends DebugLog {
         super();
         this.url += url;
     }
+    setUrl(url: string) {
+        this.url = url;
+        return this;
+    }
     get(param: any = undefined) {
         this.init.method = "GET"
         if (param) {

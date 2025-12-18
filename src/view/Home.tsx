@@ -4,29 +4,35 @@ import { BZHNet } from "../net/BZHNet";
 import { Icon } from "@iconify/react";
 import { useBZHContext } from "../context";
 import bzh_view_home, { json_data } from "../net/script/bzh_view_home";
-import AnalysisJson from "../net/AnalysisJson";
+import BZHLoding from "../components/mini/BZHLoding";
+import AnalysisJson from "../lib/AnalysisJson";
+import BZH_Images from "../components/BZH_Images";
 
+// const url = 
 export default function () {
-    const [data, setData] = useState(json_data);
     const [state] = useBZHContext();
+    const [data, setData] = useState(json_data);
+    const [loding, setLoding] = useState(true);
+    let url = import.meta.env['VITE_URL'] as string
     useEffect(() => {
-        new AnalysisJson<any>(new BZHNet("").get(), bzh_view_home, setData)
+        new AnalysisJson<any>(new BZHNet().setUrl(url).get(), bzh_view_home, (data) => {
+            setData(data)
+            setTimeout(() => {
+                setLoding(false)
+            }, 500);
+        })
     }, [])
-    return <div className={`app m-auto ${state.full ? 'p-2' : 'p-2'}`}>
-        <div className="relative flex justify-center items-center">
-            <div className="flex items-center gap-1.5 absolute">
-                <Input placeholder="输入关键字..." className="w-100" />
-                <Button size="lg">
-                    <Icon icon="material-symbols:image-search" width={100} />
-                </Button>
-            </div>
-            {
-                data.bg &&
+    return <BZHLoding loding={loding}>
+        <div className={`app m-auto ${state.full ? 'p-2' : 'p-2'}`}>
+            <div className="relative flex justify-center items-center">
+                <div className="flex items-center gap-1.5 absolute">
+                    <Input placeholder="输入关键字..." className="w-100" />
+                    <Button size="lg">
+                        <Icon icon="material-symbols:image-search" width={100} />
+                    </Button>
+                </div>
                 <img src={data.bg} className="rounded-sm w-full" />
-            }
-        </div>
-        {
-            data.tags.length > 1 &&
+            </div>
             <Tabs className="w-full text-center my-5">
                 <Tabs.ListContainer>
                     <Tabs.List
@@ -42,17 +48,7 @@ export default function () {
                     </Tabs.List>
                 </Tabs.ListContainer>
             </Tabs>
-        }
-        <div className="grid grid-cols-4 gap-1.5">
-            {/* {} */}
-            {/* {
-                data.imgs.map((item, idx) => {
-                    return <div className="" key={idx}>
-                        <img src={item.src} className="w-full rounded-md shadow-md" />
-                    </div>
-                })
-            } */}
+            <BZH_Images url={url.concat(`/page/1/`)}></BZH_Images>
         </div>
-        {/* {JSON.stringify(data)} */}
-    </div>
+    </BZHLoding>
 }
