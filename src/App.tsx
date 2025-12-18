@@ -1,22 +1,14 @@
 import TitleBar from "./components/BZH_TitleBar";
 import { useBZHContext } from "./context";
-import { createBrowserRouter, RouterProvider } from "react-router";
-import Home from "./view/Home";
+import { RouterProvider } from "react-router";
+import router from "./router";
 import "./design/App.css";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    Component: Home,
-    // loader: loadRootData,
-  },
-]);
 
 function App() {
   const [data] = useBZHContext()
 
   return (
-    <main className={`h-full bg-foreground text-surface ${data.full || 'rounded-md'}`}>
+    <main className={`h-full bg-background rounded-md overflow-hidden text-surface ${data.full || 'rounded-md'}`}>
       <TitleBar />
       <div className="p-1 main">
         <RouterProvider router={router} />

@@ -16,7 +16,7 @@
         "dataDirectory": "",
         "decorations": false,
         "transparent": true,
-        "shadow": false,
+        "shadow": true,
         "width": 1000,
         "height": 800,
         "resizable": false

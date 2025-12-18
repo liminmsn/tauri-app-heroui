@@ -1,8 +1,8 @@
 export const json_data = {
     bg: '',
     searchUrl: '',
-    tags: [{ label: '', href: '' }],
-    imgs: [{ src: '', href: '', label: '' }]
+    tags: [] as { href: string, label: string }[],
+    imgs: [] as { src: string, href: string, label: string }[]
 }
 export default function (document: Document) {
     json_data.bg = document.getElementsByClassName('index-banner container')[0].children[0].getAttribute('src') || '';

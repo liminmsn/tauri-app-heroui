@@ -1,5 +1,5 @@
-import { BZHNet } from "../net/BZHNet";
-import DebugLog from "./DebugLog";
+import { BZHNet } from "./BZHNet";
+import DebugLog from "../lib/DebugLog";
 
 export default class AnalysisJson<T> extends DebugLog {
     constructor(net: BZHNet, analy: (dom: Document) => T, setContext: (data: T) => void) {

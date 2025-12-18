@@ -9,6 +9,6 @@ export default function BZH_Title() {
 
     return <div className='bzh_title p-1'>
         <Icon icon="catppuccin:typescript-react" width="16" height="16" />
-        <Label className="float-left text-surface" style={{ lineHeight: 1.2 }}>{APP_Name}</Label>{JSON.stringify(state)}
+        <Label className="float-left" style={{ lineHeight: 1.2 }}>{APP_Name}</Label>
     </div>
 }
