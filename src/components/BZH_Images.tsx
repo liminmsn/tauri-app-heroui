@@ -26,7 +26,7 @@ export default function ({ url }: BZHImageInfo) {
         <div className="grid grid-cols-4 gap-1.5">
             {
                 img_arr.map((item, idx) => {
-                    return <div className="group/item relative select-none cursor-pointer overflow-hidden rounded-sm" key={idx}>
+                    return <div className="group/item text-default-foreground relative select-none cursor-pointer overflow-hidden rounded-sm" key={idx}>
                         <img src={item.item_img} />
                         <div className="absolute top-1 left-1">
                             <Label className="font-bold text-yellow-500">

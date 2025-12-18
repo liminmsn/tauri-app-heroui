@@ -1,9 +1,8 @@
 import { CloseButton } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { Window } from '@tauri-apps/api/window';
-import './index.css';
-import BZH_Title from '../BZH_Title';
-import { useBZHContext } from '../../context';
+import BZH_Title from './BZH_Title';
+import { useBZHContext } from '../context';
 
 
 const current = Window.getCurrent()
@@ -15,9 +14,9 @@ export default function TitleBar() {
         await current.isMaximized().then(bol => dispatch({ type: 'incremented_full', data: { full: bol } }))
     }
 
-    return <div className="head shadow-md p-1">
+    return <div className="top_bar shadow-md p-1 flex justify-between bg-accent">
         <BZH_Title />
-        <div className="title_bar">
+        <div className="top_bar_btn">
             <CloseButton onClick={() => current.minimize()} className="cursor-pointer">
                 <Icon icon="material-symbols:check-indeterminate-small-rounded" />
             </CloseButton>

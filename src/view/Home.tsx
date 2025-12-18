@@ -28,7 +28,7 @@ export default function () {
                 <div className="flex items-center gap-1.5 absolute">
                     <Input placeholder="输入关键字..." className="w-100" />
                     <Button size="lg">
-                        <Icon icon="material-symbols:image-search" width={100} />
+                        <Icon icon="line-md:search-twotone" width="24" height="24" />
                     </Button>
                 </div>
                 <img src={data.bg} className="rounded-sm w-full" />
