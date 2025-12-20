@@ -2,13 +2,20 @@
 @import "@heroui/styles";
 
 :root {
-    --accent: green;
+    --accent: #05a081;
+}
+
+html,
+body {
+    scrollbar-width: none;
+}
+
+main {
+    scrollbar-width: none;
 }
 
 .main {
     height: calc(100vh - 34px);
-    overflow-y: auto;
-    scrollbar-width: none;
 }
 
 .top_bar {

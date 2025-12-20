@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import AnalysisJson from "../lib/AnalysisJson";
 import { BZHNet } from "../net/BZHNet";
-import bhz_view_imgs, { imgs } from "../net/script/bhz_view_imgs";
+import bhz_view_imgs, { imgs } from "../net/script/bzh_view_imgs";
 import BZHLoding from "./mini/BZHLoding";
 import { Label } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import { NavLink } from "react-router";
 
 type BZHImageInfo = {
     url: string;
@@ -27,23 +28,25 @@ export default function ({ url }: BZHImageInfo) {
             {
                 img_arr.map((item, idx) => {
                     return <div className="group/item text-default-foreground relative select-none cursor-pointer overflow-hidden rounded-sm" key={idx}>
-                        <img src={item.item_img} />
+                        <NavLink to={"/detail?" + item.item_href}>
+                            <img src={item.item_img} />
+                        </NavLink>
                         <div className="absolute top-1 left-1">
                             <Label className="font-bold text-yellow-500">
                                 {item.item_icon}
                             </Label>
                         </div>
                         <div className="invisible group-hover/item:visible absolute bottom-0 p-1 pb-0 w-full rounded-sm overflow-hidden text-ellipsis" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(2px)', fontSize: '10pt', lineHeight: 1.4 }}>
-                            <span className=" text-nowrap">{item.item_info.disc}</span>
+                            <Label className="text-nowrap">{item.item_info.disc}</Label>
                             <div className="flex justify-between w-full">
-                                <span className="flex items-center gap-1.5">
+                                <Label className="flex items-center gap-1.5">
                                     {item.item_info.fa_photo}
-                                    <Icon icon="line-md:tablet-twotone" width="20" height="20" />
-                                </span>
-                                <span className="flex text-red-500">
+                                    <Icon icon="line-md:image" width="20" height="24" />
+                                </Label>
+                                <Label className="flex text-red-500">
                                     <Icon icon="line-md:heart-filled" width="20" height="18" />
                                     {item.item_info.fa_heart}
-                                </span>
+                                </Label>
                             </div>
                         </div>
                     </div>

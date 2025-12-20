@@ -8,6 +8,6 @@ export default function BZH_Title() {
 
     return <div className='p-1 text-nowrap flex'>
         <Icon icon="catppuccin:typescript-react" width="16" height="16" />
-        <Label className="float-left" style={{ lineHeight: 1.2 }}>{APP_Name}</Label>
+        <Label className="float-left ml-1 font-bold" style={{ lineHeight: 1.2 }}>{APP_Name}</Label>
     </div>
 }

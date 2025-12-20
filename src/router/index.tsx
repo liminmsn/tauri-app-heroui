@@ -1,5 +1,6 @@
 import { createBrowserRouter, } from "react-router";
 import Home from "../view/Home";
+import Detail from "../view/Detail";
 
 export default createBrowserRouter([
     {
@@ -7,7 +8,10 @@ export default createBrowserRouter([
         Component: Home,
         loader: function (a) {
             console.log(a);
-
         }
     },
+    {
+        path: '/detail',
+        Component: Detail
+    }
 ]);

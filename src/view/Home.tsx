@@ -17,23 +17,23 @@ export default function () {
     useEffect(() => {
         new AnalysisJson<any>(new BZHNet().setUrl(url).get(), bzh_view_home, (data) => {
             setData(data)
-            setTimeout(() => {
-                setLoding(false)
-            }, 500);
+            setLoding(false)
         })
     }, [])
     return <BZHLoding loding={loding}>
-        <div className={`app m-auto ${state.full ? 'p-2' : 'p-2'}`}>
+        <div className={`app m-auto p-1.5`}>
             <div className="relative flex justify-center items-center">
-                <div className="flex items-center gap-1.5 absolute">
-                    <Input placeholder="输入关键字..." className="w-100" />
-                    <Button size="lg">
-                        <Icon icon="line-md:search-twotone" width="24" height="24" />
-                    </Button>
-                </div>
+                {
+                    <div className="flex items-center gap-1.5 absolute">
+                        <Input placeholder="输入关键字..." className="w-100" />
+                        <Button size="lg">
+                            <Icon icon="line-md:search-twotone" width="24" height="24" />
+                        </Button>
+                    </div>
+                }
                 <img src={data.bg} className="rounded-sm w-full" />
             </div>
-            <Tabs className="w-full text-center my-5">
+            <Tabs className="w-full text-center my-4">
                 <Tabs.ListContainer>
                     <Tabs.List
                         aria-label="Options"

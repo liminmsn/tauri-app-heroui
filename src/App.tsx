@@ -8,9 +8,9 @@ function App() {
   const [data] = useBZHContext()
 
   return (
-    <main className={`h-full bg-background overflow-hidden text-surface ${data.full || 'rounded-md'}`}>
+    <main className={`h-full bg-background overflow-y-auto text-surface ${data.full || 'rounded-md'}`}>
       <TitleBar />
-      <div className="p-1 main">
+      <div className="main">
         <RouterProvider router={router} />
       </div>
     </main>

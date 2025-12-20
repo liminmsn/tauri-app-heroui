@@ -14,7 +14,7 @@ export default function TitleBar() {
         await current.isMaximized().then(bol => dispatch({ type: 'incremented_full', data: { full: bol } }))
     }
 
-    return <div className="top_bar shadow-md p-1 flex justify-between bg-accent">
+    return <div className="top_bar shadow-md p-1 flex justify-between sticky top-0 z-10" style={{ maxHeight: '34px' }}>
         <BZH_Title />
         <div className="top_bar_btn">
             <CloseButton onClick={() => current.minimize()} className="cursor-pointer">
