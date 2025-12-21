@@ -1,4 +1,4 @@
-import { CloseButton } from '@heroui/react';
+import { CloseButton, Label } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { Window } from '@tauri-apps/api/window';
 import BZH_Title from './BZH_Title';
@@ -22,13 +22,17 @@ export default function TitleBar() {
         </div>
         <div className="top_bar_btn">
             <CloseButton onClick={() => current.minimize()} className="cursor-pointer">
-                <Icon icon="material-symbols:check-indeterminate-small-rounded" />
+                <Label><Icon icon="material-symbols:check-indeterminate-small-rounded" /></Label>
             </CloseButton>
             <CloseButton onClick={ToggleMaxmize} className="cursor-pointer">
-                <Icon icon={`material-symbols:${data.full ? 'fullscreen-exit' : 'fullscreen'}`} />
+                <Label>
+                    <Icon icon={`material-symbols:${data.full ? 'fullscreen-exit' : 'fullscreen'}`} />
+                </Label>
             </CloseButton>
-            <CloseButton onClick={() => current.close()} className="text-red-700 cursor-pointer">
-                <Icon icon="material-symbols:close-rounded" />
+            <CloseButton onClick={() => current.close()} className="cursor-pointer">
+                <Label className='text-red-700'>
+                    <Icon icon="material-symbols:close-rounded" />
+                </Label>
             </CloseButton>
         </div>
     </div >
