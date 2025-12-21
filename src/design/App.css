@@ -7,6 +7,7 @@
 
 html,
 body {
+    overflow: hidden;
     scrollbar-width: none;
 }
 
@@ -20,6 +21,20 @@ main {
 
 .top_bar {
     -webkit-app-region: drag;
+    position: sticky;
+
+    &::before {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        /* background: repeating-linear-gradient(to bottom, var(--color-background), rgba(0, 0, 0, 0.5)); */
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+    }
 }
 
 .top_bar_btn {
