@@ -6,7 +6,7 @@ export default class AnalysisJson<T> extends DebugLog {
         super();
         net.send().then(async res => {
             const dom = new DOMParser().parseFromString(await res.text(), 'text/html')
-            this.Log(dom)
+            // this.Log(dom)
             setContext(analy(dom))
         })
     }

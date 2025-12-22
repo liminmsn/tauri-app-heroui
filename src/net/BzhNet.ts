@@ -27,7 +27,7 @@ export class BZHNet extends DebugLog {
     }
     async send() {
         const res = await fetch(this.url, this.init)
-        this.Log(this.url)
+        // this.Log(this.url)
         if (res.status == 200) {
             this.Log(res)
             return res;

@@ -17,8 +17,8 @@ export default createBrowserRouter([
                 Component: Detail
             }
         ],
-        loader: function (a) {
-            console.log(a);
-        }
+        // loader: function (a) {
+        //     // console.log(a);
+        // }
     }
 ]);
