@@ -15,7 +15,9 @@ export const detil = {
     down_info: [{ href: '', label: '' }]
 }
 export default function (document: Document) {
-    detil.bg = document.getElementsByClassName('article-pc')[0].children[0].getAttribute('src') || '';
+    const bg_pc = document.getElementsByClassName('article-pc')
+    const bg_m = document.getElementsByClassName('article-m')
+    detil.bg = (bg_pc[0] || bg_m[0]).children[0].getAttribute('src') || '';
     detil.info_tag = Array.from(document.getElementsByClassName('mod-main mod-info ')[0].getElementsByTagName('h1'))[0].textContent,
         detil.infos = Array.from(document.getElementsByClassName('mod-main mod-info ')[0].getElementsByTagName('p')).map(item => item.textContent).splice(3).filter(item => item);
     detil.tags = Array.from(document.getElementsByClassName("mod-tags clear")[0].children).map(item => {

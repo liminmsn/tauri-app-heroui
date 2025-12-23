@@ -20,13 +20,13 @@ export function AppLayout() {
     // console.dir(percentage);
   }
 
-  return <main className={`h-full bg-background overflow-y-auto text-surface ${data.full || 'rounded-md'}`} ref={refMain} onScroll={(e) => scroll(e)}>
+  return <main className={`h-full bg-background overflow-y-scroll text-surface ${data.full || 'rounded-md'}`} ref={refMain} onScroll={(e) => scroll(e)}>
     <TitleBar />
     <div className="main">
       <Outlet />
     </div>
     {
-      <div className="absolute bottom-4 right-4" style={{ transition: '250ms', opacity: data.percentage > 0.4 ? 1 : 0 }}>
+      <div className="fixed bottom-4 right-4 rounded-4xl active:scale-95" style={{ background: 'rgba(0,0,0,0.5)', transition: '250ms', opacity: data.percentage > 0.4 ? 1 : 0 }}>
         <Label onClick={() => refMain.current?.scrollTo({ top: 0, behavior: 'smooth' })}>
           <Icon icon="material-symbols-light:arrow-circle-up" height={40} />
         </Label>

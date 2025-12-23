@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef, useState } from "react";
+import { Dispatch, RefObject, SetStateAction, useEffect, useRef, useState } from "react";
 import AnalysisJson from "../lib/AnalysisJson";
 import { BZHNet } from "../net/BZHNet";
 import bhz_view_imgs, { imgs } from "../net/script/bzh_view_imgs";
@@ -6,6 +6,7 @@ import { Label, Spinner } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { NavLink } from "react-router";
 import { useBZHContext } from "../context";
+import { PacmanLoader } from "react-spinners";
 
 type BZHImageInfo = {
     url: string;
@@ -16,7 +17,7 @@ export default function ({ url, page }: BZHImageInfo) {
     // /page/1/
     const [img_arr, setImgs] = useState<typeof imgs>([]);
     const [state] = useBZHContext();
-    const loding = useRef(true);
+    const loding = useRef(false);
     const isFetching = useRef(false);
 
     function fetchData() {
@@ -32,14 +33,12 @@ export default function ({ url, page }: BZHImageInfo) {
     }
 
     useEffect(() => {
-        setImgs([])
-        // imgs.filter(() => imgs.pop())
-        isFetching.current = false;
         loding.current = true
+        setImgs([])
         fetchData();
     }, [url])
     useEffect(() => {
-        if (state.percentage >= 0.9 && !loding.current) {
+        if (state.percentage >= 1 && !loding.current) {
             fetchData()
         }
     }, [state.percentage])
@@ -55,7 +54,7 @@ export default function ({ url, page }: BZHImageInfo) {
                             {item.item_icon}
                         </Label>
                     </div>
-                    <div className="invisible group-hover/item:visible absolute bottom-0 p-1 pb-0 w-full rounded-sm overflow-hidden text-ellipsis" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(2px)', fontSize: '10pt', lineHeight: 1.4 }}>
+                    <div className="invisible group-hover/item:visible absolute bottom-0  p-1 py-2 w-full rounded-sm rounded-t-none overflow-hidden text-ellipsis" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(2px)', fontSize: '10pt', lineHeight: 1.4 }}>
                         <Label className="text-nowrap">{item.item_info.disc}</Label>
                         <div className="flex justify-between w-full">
                             <Label className="flex items-center gap-1.5">
@@ -71,6 +70,6 @@ export default function ({ url, page }: BZHImageInfo) {
                 </div>
             })
         }
-        {loding && <Spinner color="accent" />}
+        {loding && <PacmanLoader color="var(--foreground)" size={8} />}
     </div>
 }

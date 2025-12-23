@@ -1,5 +1,8 @@
 @import "tailwindcss";
 @import "@heroui/styles";
+@import "./style/img.css";
+@import "./style/card.css";
+
 
 :root {
     --accent: #05a081;
@@ -8,7 +11,6 @@
 html,
 body {
     overflow: hidden;
-    scrollbar-width: none;
 }
 
 main {
@@ -21,6 +23,8 @@ main {
 .top_bar {
     -webkit-app-region: drag;
     position: sticky;
+    top: 0;
+    width: 100%;
 
     &::before {
         content: '';
