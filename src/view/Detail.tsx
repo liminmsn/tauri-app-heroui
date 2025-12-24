@@ -44,14 +44,14 @@ export default function () {
                     }
                     <Label className="text-warning">{data.info_tag}</Label>
                 </div>
-                <div className="bzh_card mx-2">
+                <div className="bzh_card mx-2 max-w-80">
                     <Label className="mb-4 pr-2 justify-self-start font-bold pb-1 border-b-2 border-accent flex items-center">
                         <Icon icon="ic:twotone-category" height="20" />
                         标签
                     </Label>
                     <div className="flex flex-wrap content-start gap-1.5">
                         {data.tags.map(item => {
-                            return <span className="p-1 rounded-sm bg-background inline-block" key={item.href}>
+                            return <span className=" rounded-sm bg-accent inline-block leading-1 text-sm p-1" key={item.href}>
                                 <Label>{item.label.slice(1)}</Label>
                             </span>
                         })}
@@ -77,9 +77,14 @@ export default function () {
                             </Checkbox>
                         })}
                     </CheckboxGroup>
-                    <Button className="w-full mt-4 mb-2 rounded-sm">
-                        <Icon icon="line-md:cloud-alt-download-filled" width="30" height="30" />
-                    </Button>
+                    <div className="flex gap-1 mb-2 mt-4">
+                        <Button className="w-full rounded-sm">
+                            <Icon icon="line-md:cloud-alt-download-filled" width="30" height="30" />
+                        </Button>
+                        <Button className="w-full rounded-sm">
+                            <Icon icon="line-md:cloud-alt-download-filled" width="30" height="30" />
+                        </Button>
+                    </div>
                 </div>
             </div>
             <div className="bzh_card mt-2">

@@ -26,8 +26,8 @@ export function AppLayout() {
       <Outlet />
     </div>
     {
-      <div className="fixed bottom-4 right-4 rounded-4xl active:scale-95" style={{ background: 'rgba(0,0,0,0.5)', transition: '250ms', opacity: data.percentage > 0.4 ? 1 : 0 }}>
-        <Label onClick={() => refMain.current?.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <div className="fixed bottom-2 right-4 rounded-4xl active:scale-90" style={{ background: 'rgba(0,0,0,0.5)', transition: '250ms', opacity: data.percentage > 0.4 ? 1 : 0 }}>
+        <Label className="cursor-pointer" onClick={() => refMain.current?.scrollTo({ top: 0, behavior: 'smooth' })}>
           <Icon icon="material-symbols-light:arrow-circle-up" height={40} />
         </Label>
       </div>
