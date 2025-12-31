@@ -1,9 +1,26 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
-:root {}
+@font-face {
+    font-family: 'pfyft';
+    src: url("/font/平方迎风体.ttf");
+}
+
+/* :root {} */
+
+.head {
+    /* background: repeating-linear-gradient(to right, rgba(208, 130, 12, 0.2), transparent); */
+    /* backdrop-filter: blur(2px); */
+}
 
 #root {
-    line-height: 1;
+    font-family: 'pfyft';
     height: 100vh;
+}
+
+main {
+    overflow: hidden;
+    overflow-y: auto;
+    background-image: url('/bg.jpg');
+    background-size: 100% 100%;
 }

@@ -1,14 +1,12 @@
 import { Label } from '@heroui/react'
-import { Icon } from '@iconify/react'
+import logo from '../../assets/logo.png'
 import './style.css'
-import { useBZHContext } from '../../context'
 
 const APP_Name = import.meta.env['VITE_NAME']
 export default function BZH_Title() {
-    const [state] = useBZHContext()
 
-    return <div className='bzh_title p-1'>
-        <Icon icon="catppuccin:typescript-react" width="16" height="16" />
-        <Label className="float-left text-surface" style={{ lineHeight: 1.2 }}>{APP_Name}</Label>{JSON.stringify(state)}
+    return <div className='bzh_title flex items-center'>
+        <img src={logo} width={50} />
+        <Label className="float-left text-xl" style={{ lineHeight: 1.2 }}>{APP_Name}</Label>
     </div>
 }
