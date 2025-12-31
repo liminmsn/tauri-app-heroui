@@ -18,6 +18,8 @@
         "transparent": true,
         "shadow": false,
         "resizable": true,
+        "minWidth": 900,
+        "minHeight": 600,
         "width": 900,
         "height": 600
       }
