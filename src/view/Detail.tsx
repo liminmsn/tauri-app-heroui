@@ -1,4 +1,4 @@
-import { Button, Checkbox, CheckboxGroup, Chip, Description, Label } from "@heroui/react"
+import { Button, Checkbox, CheckboxGroup, Chip, Description, Label, Radio, RadioGroup } from "@heroui/react"
 import { useEffect, useState } from "react"
 import { NavLink, useLocation } from "react-router"
 import { BZHNet } from "../net/BZHNet"
@@ -11,9 +11,10 @@ export default function () {
     const { search } = useLocation()
     const [loding, setLoding] = useState(true)
     const [data, setData] = useState(detil)
+    const [selectd, setSelectd] = useState<string | null>(null)
     useEffect(() => {
         new AnalysisJson(new BZHNet().setUrl(search.replace('?', '')), bzh_view_detail, (data) => {
-            setData({ ...data, imgs: data.imgs.filter((item) => item.item_img != '') })
+            setData({ ...data, down_info: data.down_info.map(item => { return { ...item, bol: false } }), imgs: data.imgs.filter((item) => item.item_img != '') })
             setLoding(false)
         })
         return function () {
@@ -62,27 +63,34 @@ export default function () {
                         <Icon icon="ic:twotone-file-open" height="20" />
                         <span className="ml-1">执行操作</span>
                     </Label>
-                    <CheckboxGroup name="interests">
-                        {/* <Label>选择你喜欢的尺寸</Label> */}
+                    {/* <CheckboxGroup name="interests">
+                        <Label>选择你喜欢的尺寸</Label>
+                       
+                        {JSON.stringify(selectd)}
+                        {detil.down_info.map(item => {
+                            return
+                        })}
+                    </CheckboxGroup> */}
+                    <RadioGroup defaultValue="premium" name="plan" onChange={(val) => setSelectd(val)}>
                         <Description>选择你喜欢的尺寸</Description>
                         {detil.down_info.map(item => {
-                            return <Checkbox value="coding" key={item.href}>
-                                <Checkbox.Control>
-                                    <Checkbox.Indicator />
-                                </Checkbox.Control>
-                                <Checkbox.Content>
+                            return <Radio value={item.href}>
+                                <Radio.Control>
+                                    <Radio.Indicator />
+                                </Radio.Control>
+                                <Radio.Content>
                                     <Label>{item.label}</Label>
                                     {/* <Description>{item.href}</Description> */}
-                                </Checkbox.Content>
-                            </Checkbox>
+                                </Radio.Content>
+                            </Radio>
                         })}
-                    </CheckboxGroup>
+                    </RadioGroup>
                     <div className="flex gap-1 mb-2 mt-4">
                         <Button className="w-full rounded-sm">
-                            <Icon icon="line-md:cloud-alt-download-filled" width="30" height="30" />
+                            <Icon icon="line-md:download-twotone-loop" />
                         </Button>
                         <Button className="w-full rounded-sm">
-                            <Icon icon="line-md:cloud-alt-download-filled" width="30" height="30" />
+                            <Icon icon="line-md:image-twotone" />
                         </Button>
                     </div>
                 </div>
