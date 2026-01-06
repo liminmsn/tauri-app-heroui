@@ -1,4 +1,4 @@
-import { Button, Checkbox, CheckboxGroup, Chip, Description, Label, Radio, RadioGroup } from "@heroui/react"
+import { Button, Description, Label, Radio, RadioGroup } from "@heroui/react"
 import { useEffect, useState } from "react"
 import { NavLink, useLocation } from "react-router"
 import { BZHNet } from "../net/BZHNet"
@@ -6,12 +6,22 @@ import AnalysisJson from "../lib/AnalysisJson"
 import bzh_view_detail, { detil } from "../net/script/bzh_view_detail"
 import BZHLoding from "../components/mini/BZHLoding"
 import { Icon } from "@iconify/react"
+import { invoke } from "@tauri-apps/api/core"
 
 export default function () {
     const { search } = useLocation()
     const [loding, setLoding] = useState(true)
     const [data, setData] = useState(detil)
     const [selectd, setSelectd] = useState<string | null>(null)
+
+    function save() {
+        if (selectd != null) {
+            invoke<any>('down_image', { url: selectd }).then(val => {
+                alert(val)
+            })
+        }
+    }
+
     useEffect(() => {
         new AnalysisJson(new BZHNet().setUrl(search.replace('?', '')), bzh_view_detail, (data) => {
             setData({ ...data, down_info: data.down_info.map(item => { return { ...item, bol: false } }), imgs: data.imgs.filter((item) => item.item_img != '') })
@@ -74,7 +84,7 @@ export default function () {
                     <RadioGroup defaultValue="premium" name="plan" onChange={(val) => setSelectd(val)}>
                         <Description>选择你喜欢的尺寸</Description>
                         {detil.down_info.map(item => {
-                            return <Radio value={item.href}>
+                            return <Radio value={item.href} key={item.href}>
                                 <Radio.Control>
                                     <Radio.Indicator />
                                 </Radio.Control>
@@ -86,7 +96,7 @@ export default function () {
                         })}
                     </RadioGroup>
                     <div className="flex gap-1 mb-2 mt-4">
-                        <Button className="w-full rounded-sm">
+                        <Button className="w-full rounded-sm" onClick={() => save()}>
                             <Icon icon="line-md:download-twotone-loop" />
                         </Button>
                         <Button className="w-full rounded-sm">
