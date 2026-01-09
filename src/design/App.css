@@ -9,6 +9,7 @@
 /* :root {} */
 
 .head {
+    -webkit-app-region: drag;
     /* background: repeating-linear-gradient(to right, rgba(208, 130, 12, 0.2), transparent); */
     /* backdrop-filter: blur(2px); */
 }

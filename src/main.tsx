@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import { BZHProvider } from "./context";
+import { RouterProvider } from "react-router";
+import router from "./router";
+
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BZHProvider>
-      <App />
+      <RouterProvider router={router} />
     </BZHProvider>
   </React.StrictMode>,
 );

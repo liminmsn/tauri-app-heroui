@@ -1,8 +1,7 @@
 import "./design/App.css";
-import TitleBar from "./components/BZH_TitleBar";
+import TitleBar from "@/components/element/BZHTitleBar";
 import { useBZHContext } from "./context";
-import { RouterProvider } from "react-router";
-import router from "./router";
+import { Outlet } from "react-router";
 
 function App() {
   const [data] = useBZHContext()
@@ -11,7 +10,7 @@ function App() {
     <main className={`h-full ${data.full || 'rounded-sm'}`}>
       <TitleBar />
       <div className="p-2">
-        <RouterProvider router={router} />
+        <Outlet />
       </div>
     </main>
   );

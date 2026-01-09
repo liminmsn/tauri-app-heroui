@@ -1,0 +1,22 @@
+.bzh_title {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.logo_label {
+    font-weight: bolder;
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    position: absolute;
+    width: 40px;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.title_bar button {
+    -webkit-app-region: no-drag;
+}
