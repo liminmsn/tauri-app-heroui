@@ -16,7 +16,7 @@ export default function () {
 
     function save() {
         if (selectd != null) {
-            invoke<any>('down_image', { url: selectd }).then(val => {
+            invoke<any>('down_img', { url: selectd }).then(val => {
                 alert(val)
             })
         }
