@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { NavLink } from "react-router";
 
 export default function () {
     const [list] = useState([
@@ -59,9 +60,11 @@ export default function () {
     ]);
     return <div>
         <div className="h-full overflow-y-auto grid grid-flow-col gap-4 px-10 pt-10"
-            style={{ height: 'calc(100vh - 32.6px)', gridTemplateRows: 'repeat(12,0fr)', scrollbarWidth: 'none' }}>
+            style={{ height: 'calc(100vh - 36px)', gridTemplateRows: 'repeat(12,0fr)', scrollbarWidth: 'none' }}>
             {list.map(item => {
-                return <li className="xl:text-2xl hover:text-shadow-md hover:scale-110 select-none cursor-pointer justify-self-center" key={item}>{item}</li>
+                return <NavLink to={`/info/${item}`} key={item}>
+                    <li className="xl:text-2xl hover:text-shadow-md hover:scale-110 select-none cursor-pointer justify-self-center" >{item}</li>
+                </NavLink>
             })}
         </div>
     </div>

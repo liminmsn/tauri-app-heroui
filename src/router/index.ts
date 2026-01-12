@@ -21,23 +21,37 @@ const router = createBrowserRouter([
                 Component: Contents
             },
             {
-                id: '关于',
-                path: '/about/:idx',
+                id: '回馈',
+                path: '/about',
                 Component: About,
-                action: async ({ request }) => {
-                    console.log(request.body);
-                    return "123123";
-                },
+            },
+            {
+                id: '',
+                path: '/info/:pid',
+                Component: Info,
+                loader: async ({ params }) => {
+                    const { pid } = params;
+                    const res = await (await fetch(`/book/${pid}.txt`)).text()
+                    const yy = res.match(RegExp(/\[原文\]([\s\S]+?)\[原文END\]/g));
+                    const jsfy = res.match(RegExp(/\[解释翻译\]([\s\S]+?)\[解释翻译END\]/g));
+                    const zscc = res.match(RegExp(/\[注释出处\]([\s\S]+?)\[注释出处END\]/g));
+                    const obj = {
+                        yw: '', jsfy: '', zscc: ''
+                    }
+                    if (yy && jsfy && zscc) {
+                        obj.yw = yy![0].replace('[原文]', '').replace('[原文END]', '').replaceAll('。', '。<br/>');
+                        obj.jsfy = jsfy![0].replace('[解释翻译]', '').replace('[解释翻译END]', '').replaceAll('。', '。<br/>');
+                        obj.zscc = zscc![0].replace('[注释出处]', '').replace('[注释出处END]', '').replaceAll('。', '。<br/>');
+                    }
+
+                    return obj;
+                }
             }
-        ]
+        ],
     },
-    {
-        path: '/info/:pid',
-        Component: Info
-    }
 ]);
 
-const list = router.routes.map(item => item.children?.map(children => {
+const list = router.routes.map(item => item.children?.filter(ite => ite.id != '').map(children => {
     return {
         naem: children.id,
         path: children.path

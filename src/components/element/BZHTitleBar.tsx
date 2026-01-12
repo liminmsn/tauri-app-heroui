@@ -15,7 +15,7 @@ export default function () {
         await current.isMaximized().then(bol => dispatch({ type: 'incremented_full', data: { full: bol } }))
     }
 
-    return <div className="head p-1">
+    return <div className="head p-1" style={{ lineHeight: 1.2, fontFamily: 'pfyft' }}>
         <BZHTitle />
         <div className="title_bar">
             <CloseButton onClick={() => current.minimize()} className="cursor-pointer">
