@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router";
 import Home from "../view/Home";
 import App from "@/App";
+import Contents from "@/view/Contents";
+import About from "@/view/About";
+import Info from "@/view/Info";
 
 const router = createBrowserRouter([
     {
@@ -15,14 +18,22 @@ const router = createBrowserRouter([
             {
                 id: '目录',
                 path: '/contents',
-                Component: Home
+                Component: Contents
             },
             {
                 id: '关于',
-                path: '/about',
-                Component: Home
+                path: '/about/:idx',
+                Component: About,
+                action: async ({ request }) => {
+                    console.log(request.body);
+                    return "123123";
+                },
             }
         ]
+    },
+    {
+        path: '/info/:pid',
+        Component: Info
     }
 ]);
 

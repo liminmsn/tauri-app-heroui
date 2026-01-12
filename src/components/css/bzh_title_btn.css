@@ -2,7 +2,7 @@
     display: inline-flex;
     border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 0 3px var(--eclipse) inset;
+    /* box-shadow: 0 0 3px var(--eclipse) inset; */
     -webkit-app-region: no-drag;
 }
 
@@ -13,6 +13,6 @@
 
 .nva_link_select {
     transition: 400ms;
-    color: var(--danger);
-    background: var(--eclipse);
+    color: red;
+    /* text-decoration: solid underline; */
 }
