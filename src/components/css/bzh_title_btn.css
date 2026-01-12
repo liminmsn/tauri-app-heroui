@@ -13,6 +13,7 @@
 
 .nva_link_select {
     transition: 400ms;
-    color: red;
+    font-weight: bolder;
+    /* color: red; */
     /* text-decoration: solid underline; */
 }
