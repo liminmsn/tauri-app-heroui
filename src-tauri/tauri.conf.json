@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Mozi",
-  "version": "0.1.0",
-  "identifier": "com.limin.guoxuemeng",
+  "productName": "mozi",
+  "version": "1.1.0",
+  "identifier": "com.limin.mozi",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "dataDirectory": "com.limin.guoxuemeng",
+        "dataDirectory": "com.limin.mozi",
         "decorations": false,
         "transparent": true,
         "shadow": false,
