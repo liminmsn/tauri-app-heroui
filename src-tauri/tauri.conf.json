@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "tauri-app",
+  "productName": "Mozi",
   "version": "0.1.0",
-  "identifier": "com.limin.tauri-app",
+  "identifier": "com.limin.guoxuemeng",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,8 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "tauri-app",
-        "dataDirectory": "",
+        "dataDirectory": "com.limin.guoxuemeng",
         "decorations": false,
         "transparent": true,
         "shadow": false,
@@ -30,7 +29,14 @@
   },
   "bundle": {
     "active": true,
-    "targets": "all",
+    "targets": "nsis",
+    "windows": {
+      "nsis": {
+        "languages": ["SimpChinese"],
+        "headerImage": "./icons/icon.png",
+        "installerIcon": "./icons/icon.ico"
+      }
+    },
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
