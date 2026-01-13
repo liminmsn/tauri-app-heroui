@@ -7,20 +7,49 @@ import bzh_view_detail, { detil } from "../net/script/bzh_view_detail"
 import BZHLoding from "../components/mini/BZHLoding"
 import { Icon } from "@iconify/react"
 import { invoke } from "@tauri-apps/api/core"
+import { Bounce, toast } from "react-toastify"
+
+function save(selectd?: string | null) {
+    if (selectd != null) {
+        invoke<any>('down_img', { url: selectd }).then(val => {
+            toast.info(`下载成功！${val}`, {
+                position: "top-right",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            })
+        })
+    }
+}
+function set_desktop(selectd: string | null) {
+    if (selectd != null) {
+        invoke<any>('set_desktop', { url: selectd }).then(val => {
+            toast.success(`成功设置壁纸！`, {
+                position: "top-right",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            })
+        })
+    }
+}
+
 
 export default function () {
     const { search } = useLocation()
     const [loding, setLoding] = useState(true)
     const [data, setData] = useState(detil)
     const [selectd, setSelectd] = useState<string | null>(null)
-
-    function save() {
-        if (selectd != null) {
-            invoke<any>('down_img', { url: selectd }).then(val => {
-                alert(val)
-            })
-        }
-    }
 
     useEffect(() => {
         new AnalysisJson(new BZHNet().setUrl(search.replace('?', '')), bzh_view_detail, (data) => {
@@ -96,10 +125,10 @@ export default function () {
                         })}
                     </RadioGroup>
                     <div className="flex gap-1 mb-2 mt-4">
-                        <Button className="w-full rounded-sm" onClick={() => save()}>
+                        <Button className="w-full rounded-sm" onClick={() => save(selectd)}>
                             <Icon icon="line-md:download-twotone-loop" />
                         </Button>
-                        <Button className="w-full rounded-sm">
+                        <Button className="w-full rounded-sm" onClick={() => set_desktop(selectd)}>
                             <Icon icon="line-md:image-twotone" />
                         </Button>
                     </div>

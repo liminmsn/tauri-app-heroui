@@ -1,8 +1,8 @@
 [package]
-name = "tauri-app"
-version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+name = "壁纸汇"
+version = "1.1.0"
+description = "巨量壁纸"
+authors = ["杨再涛(1772081518@qq.com)"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -20,9 +20,12 @@ tauri-build = { version = "2", features = [] }
 [dependencies]
 tauri = { version = "2", features = [] }
 tauri-plugin-opener = "2"
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
 tauri-plugin-http = "2"
 reqwest = { version = "0.11", features = ["stream"] }
 tokio = { version = "1.0", features = ["full"] }
+windows = { version = "0.52", features = [
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_Foundation"
+] }
+chrono = "0.4.42"
 

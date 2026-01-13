@@ -5,7 +5,7 @@ import { UIEvent, useRef } from "react";
 import router from "./router";
 import "./design/App.css";
 import { Icon } from "@iconify/react";
-import { Button, Label } from "@heroui/react";
+import { Label } from "@heroui/react";
 
 export function AppLayout() {
   const [data, dispatch] = useBZHContext()
