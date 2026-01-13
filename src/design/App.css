@@ -3,19 +3,23 @@
 
 @font-face {
     font-family: 'pfyft';
+    font-weight: 500;
     src: url("/font/平方迎风体.ttf");
 }
 
 
 .head {
     -webkit-app-region: drag;
-    /* background: repeating-linear-gradient(to right, rgba(208, 130, 12, 0.2), transparent); */
-    /* backdrop-filter: blur(2px); */
 }
 
 #root {
-    /* font-family: 'pfyft'; */
     height: 100vh;
+}
+
+:root {
+    ::selection {
+        background: #c65306;
+    }
 }
 
 main {
@@ -23,4 +27,17 @@ main {
     overflow-y: auto;
     background-image: url('/bg.jpg');
     background-size: 100% 100%;
+}
+
+
+
+
+
+li {
+    list-style: square;
+}
+
+.labelContext {
+    font-family: Consolas, 'Courier New', monospace;
+    font-weight: bolder;
 }

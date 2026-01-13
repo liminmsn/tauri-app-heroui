@@ -2,7 +2,7 @@ import { Description, Label } from "@heroui/react"
 import mozi from '@/assets/mz.jpg';
 
 export default function () {
-    return <div className="home">
+    return <div className="home labelContext">
         <div className="w-4/6 xl:max-w-2/4 mx-auto mt-20 py-10 flex gap-4">
             <img className="rounded-md w-40 xl:w-80" src={mozi} />
             <div>
