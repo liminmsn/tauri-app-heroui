@@ -39,9 +39,9 @@ const router = createBrowserRouter([
                         yw: '', jsfy: '', zscc: ''
                     }
                     if (yy && jsfy && zscc) {
-                        obj.yw = yy![0].replace('[原文]', '').replace('[原文END]', '').replaceAll('。', '。<br/>');
-                        obj.jsfy = jsfy![0].replace('[解释翻译]', '').replace('[解释翻译END]', '').replaceAll('。', '。<br/>');
-                        obj.zscc = zscc![0].replace('[注释出处]', '').replace('[注释出处END]', '').replaceAll('。', '。<br/>');
+                        obj.yw = yy![0].replace('[原文]', '').replace('[原文END]', '').replaceAll('。', '。<br/>').replaceAll('。<br/>”','。”');
+                        obj.jsfy = jsfy![0].replace('[解释翻译]', '').replace('[解释翻译END]', '').replaceAll('。', '。<br/>').replaceAll('。<br/>”','。”');
+                        obj.zscc = zscc![0].replace('[注释出处]', '').replace('[注释出处END]', '').replaceAll('。', '。<br/>').replaceAll('。<br/>”','。”');
                     }
 
                     return obj;
