@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useRef, useState } from "react";
 import AnalysisJson from "../lib/AnalysisJson";
 import { BZHNet } from "../net/BZHNet";
-import bhz_view_imgs, { imgs } from "../net/script/bzh_view_imgs";
+import { imgs } from "../net/script/bzh_view_imgs";
 import { Label } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { NavLink } from "react-router";
@@ -11,9 +11,10 @@ import { PacmanLoader } from "react-spinners";
 type BZHImageInfo = {
     url: string;
     page: RefObject<number>;
+    analy: (dom: Document) => any[];
     children?: React.ReactNode
 }
-export default function ({ url, page }: BZHImageInfo) {
+export default function({ url, page, analy }: BZHImageInfo) {
     // /page/1/
     const [img_arr, setImgs] = useState<typeof imgs>([]);
     const [state] = useBZHContext();
@@ -23,7 +24,10 @@ export default function ({ url, page }: BZHImageInfo) {
     function fetchData() {
         if (isFetching.current) return
         isFetching.current = true
-        new AnalysisJson(new BZHNet().setUrl(url.concat(`${page.current}/`)), bhz_view_imgs, (data) => {
+        loding.current = true
+        new AnalysisJson(new BZHNet().setUrl(url.concat(`${page.current}`)), analy, (data) => {
+            console.log(data);
+            
             setImgs(prev => prev.concat(data.filter(item => item.item_img != '')));
             page.current += 1;
             loding.current = false;
@@ -33,7 +37,6 @@ export default function ({ url, page }: BZHImageInfo) {
     }
 
     useEffect(() => {
-        loding.current = true
         setImgs([])
         fetchData();
     }, [url])

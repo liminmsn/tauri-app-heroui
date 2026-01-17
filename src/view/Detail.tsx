@@ -6,43 +6,7 @@ import AnalysisJson from "../lib/AnalysisJson"
 import bzh_view_detail, { detil } from "../net/script/bzh_view_detail"
 import BZHLoding from "../components/mini/BZHLoding"
 import { Icon } from "@iconify/react"
-import { invoke } from "@tauri-apps/api/core"
-import { Bounce, toast } from "react-toastify"
-
-function save(selectd?: string | null) {
-    if (selectd != null) {
-        invoke<any>('down_img', { url: selectd }).then(val => {
-            toast.info(`下载成功！${val}`, {
-                position: "top-right",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            })
-        })
-    }
-}
-function set_desktop(selectd: string | null) {
-    if (selectd != null) {
-        invoke<any>('set_desktop', { url: selectd }).then(val => {
-            toast.success(`成功设置壁纸！`, {
-                position: "top-right",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            })
-        })
-    }
-}
+import { save, set_desktop } from "../lib/Rust"
 
 
 export default function () {
