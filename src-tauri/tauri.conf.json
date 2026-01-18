@@ -36,9 +36,10 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "windows": {
+     "windows": {
       "nsis": {
-        "languages": ["SimpChinese"]
+        "languages": ["SimpChinese"],
+        "installerHooks": "./windows/hooks.nsh"
       }
     }
   }
