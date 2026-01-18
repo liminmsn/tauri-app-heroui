@@ -20,7 +20,7 @@ function save(selectd?: string | null) {
 }
 function set_desktop(selectd: string | null) {
     if (selectd != null) {
-        invoke<any>('set_desktop', { url: selectd }).then(val => {
+        invoke<any>('set_desktop', { url: selectd }).then(_val => {
             toast.success(`成功设置壁纸！`, {
                 position: "top-right",
                 autoClose: 1000,

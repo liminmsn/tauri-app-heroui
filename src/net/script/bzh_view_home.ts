@@ -10,8 +10,8 @@ export default function (document: Document) {
     json_data.tags = Array.from(document.getElementsByClassName('page-menu-list')[0].children).map(li => {
         const a = li.children[0];
         return {
-            href: a.getAttribute('href') || '',
-            label: a.textContent
+            href: (a as HTMLAnchorElement).href,
+            label: a.textContent ?? ''
         }
     })
     const imgs = document.getElementById('item-lists');

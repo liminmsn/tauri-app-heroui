@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "tauri-app",
-  "version": "0.1.0",
-  "identifier": "com.limin.tauri-app",
+  "productName": "壁纸汇",
+  "version": "1.1.0",
+  "identifier": "com.limin.bzh",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,8 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "tauri-app",
-        "dataDirectory": "",
+        "dataDirectory": "resources",
         "decorations": false,
         "transparent": true,
         "shadow": true,
@@ -28,13 +27,18 @@
   },
   "bundle": {
     "active": true,
-    "targets": "all",
+    "targets": "nsis",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "windows": {
+      "nsis": {
+        "installerHooks": "./windows/hooks.nsh"
+      }
+    }
   }
 }

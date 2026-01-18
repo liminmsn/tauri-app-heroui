@@ -8,7 +8,7 @@ const data = {
         images: []
     }
 }
-const reducer = function (prevState: typeof data, { type, data: data_ }: reducerType) {
+const reducer = function (_prevState: typeof data, { type, data: data_ }: reducerType) {
     // console.log(prevState);
     switch (type) {
         case 'incremented_full':
